@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Code Flow";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Get A Token</title>
+</head>
+<body>
+    <div>
+        <h2>Get A Token</h2>        
+        <form action="@Url.Action("StartFlow")" method="POST">
+            <p>1. Choose Desired Scopes</p>
+            <div>                
+                <p><input type="checkbox" name="scopes" value="Resource1-Read" />Resource1-Read</p>
+                <p><input type="checkbox" name="scopes" value="Resource1-Write" />Resource1-Write</p>
+                <p><input type="checkbox" name="scopes" value="Resource2-Read" />Resource2-Read</p>
+                <p><input type="checkbox" name="scopes" value="Resource2-Write" />Resource2-Write</p>
+            </div>
+            <p>2. Choose Desired OAuth2 Flow</p>
+            <div>
+                <p><input type="radio" name="flowType" value="code" checked/>Code Flow</p>
+                <p><input type="radio" name="flowType" value="implicit" />Implicit Flow</p>
+                <p><input type="radio" name="flowType" value="clientCredentials" />Client Credentials Flow</p>
+            </div>
+            <p>3. Click &quot;Request Token&quot; to Initiate Token Request </p>
+            <input type="submit" value="Request Token" />
+        </form>
+    </div>
+</body>
+</html>

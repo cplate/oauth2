@@ -1,0 +1,32 @@
+﻿@model Client2.Models.TokenInfoModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Client Home</title>
+</head>
+<body>
+    <div>
+        <h2>Token Status</h2>
+        
+        @if (!String.IsNullOrWhiteSpace(Model.Message))
+        {
+            <p>@Model.Message</p>
+        }
+
+        @if (Model.TokenCookie != null)
+        {
+           @Html.Partial("HasToken")
+        }
+        else
+        {
+            @Html.Partial("MissingToken")
+        }     
+    </div>
+</body>
+</html>

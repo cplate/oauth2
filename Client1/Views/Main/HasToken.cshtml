@@ -1,0 +1,17 @@
+﻿<p>Congrats!  You've got a token</p>
+
+<h2>Use Your Token</h2>
+<p>The following api calls are available (although some may not work with your token, depending the scope you chose when obtaining it).</p>
+<form action="@Url.Action("CallApi")" method="POST">
+    <ul>
+        <li><input type="radio" name="apiAction" value="Resource1-ReadNumber"/>Read Resource 1 Number</li>
+        <li><input type="radio" name="apiAction" value="Resource1-ReadShape"/>Read Resource 1 Shape</li>
+        <li><input type="radio" name="apiAction" value="Resource1-UpdateNumber"/>Update Resource 1 Number</li>
+        <li><input type="radio" name="apiAction" value="Resource2-ReadNumber"/>Read Resource 2 Number</li>
+        <li><input type="radio" name="apiAction" value="Resource2-ReadShape"/>Read Resource 2 Shape</li>
+        <li><input type="radio" name="apiAction" value="Resource2-UpdateNumber"/>Update Resource 2 Number</li>        
+    </ul>
+    <input type="submit" value="Make The Call!" />
+</form>
+
+<p>Or you can @Html.ActionLink("remove","RemoveToken","Main") your token</p>

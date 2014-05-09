@@ -1,0 +1,32 @@
+﻿@model string
+<html>
+    <head></head>
+    <body>
+        <script type="text/javascript">
+            // Process the authorization info that was passed in the url as a fragment
+            var fragmentParts = location.hash.substr(1).split("&");
+            var token = null;
+            var expiry = null;
+            for (var i = 0; i < fragmentParts.length; i++) {
+                var parts = fragmentParts[i].split("=");
+                if (parts[0] === "access_token") {
+                    token = parts[1];
+                }
+                if (parts[0] === "expires_in") {
+                    expiry = new Date();
+                    expiry.setTime(expiry.getTime() + parts[1] * 1000); // seconds
+                }
+            }
+            var msgQs = "?msg="; // yeah, this is hokey
+            if (token && expiry) {
+                // Add as a cookie
+                document.cookie = "@Model=" + token + "; path=/; expires=" + expiry.toGMTString();
+                msgQs += "Access Token Granted";
+            } else {
+                msgQs += "No Access Token Was Granted"; 
+            }
+            // Redirect to page where we start using the api...
+            document.location = "/Main" + msgQs;
+        </script>
+    </body>
+</html>
